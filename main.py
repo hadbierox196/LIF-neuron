@@ -207,9 +207,10 @@ firing_rates = []
 
 for I_amp in I_sweep:
     I_ext = np.ones(len(t_fi)) * I_amp
-    _, spikes = simulate_lif(I_ext, t_fi, dt, tau_m, V_rest,
-                              V_thresh, V_reset, R_m, t_fi,
-                              sigma=sigma)  # ← noise ON
+_, spikes = simulate_lif(I_ext, t_fi, dt, tau_m, V_rest,
+                          V_thresh, V_reset, R_m, t_ref,
+                          sigma=sigma)
+
     firing_rates.append(len(spikes))
 
 firing_rates = np.array(firing_rates)
